@@ -1,9 +1,18 @@
 # Files and their purpose:
 
-Here is a brief description of each routine.  Examine the routine headers for detailed usage.
+A brief description of each script is provided below. For detailed usage, look
+to the header of each script.
 
-1. [hdf5_error__define.pro](#hdf5_error__define)
-1. [hdf5_file__define.pro](#hdf5_file__define)
+* [hdf5_error__define.pro](#hdf5_error__define)
+* [hdf5_file__define.pro](#hdf5_file__define)
+* [hdf5_file_example.pro](#hdf5_file_example)
+* [hdf5_group__define.pro](#hdf5_group__define)
+* [hdf5_lapd__define.pro](#hdf5_lapd__define)
+* [HDF5_lapd_example.pro](#HDF5_lapd_example)
+* [hdf5_lapd_msi__define.pro](#hdf5_lapd_msi__define)
+* [lapd_6k_configuration.pro](#lapd_6k_configuration)
+* [lapd_extract_msi.pro](#lapd_extract_msi)
+* [lapd_n5700_configuration.pro](#lapd_n5700_configuration)
 
 ---
 ## hdf5_error__define.pro <a name="hdf5_error__define"></a>
@@ -28,7 +37,7 @@ Here is a brief description of each routine.  Examine the routine headers for de
 </dl>
 
 ---
-## hdf5_file__define.pro <a name="hdf5_error__define"></a>
+## hdf5_file__define.pro <a name="hdf5_file__define"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -68,7 +77,7 @@ OBJ_DESTROY, HDF5_file           ; destroy object
 </dl>
 
 ---
-## hdf5_file_example.pro <a name="first"></a>
+## hdf5_file_example.pro <a name="hdf5_file_example"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -78,7 +87,7 @@ OBJ_DESTROY, HDF5_file           ; destroy object
 </dl>
 
 ---
-## hdf5_group__define.pro
+## hdf5_group__define.pro <a name="hdf5_group__define"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -139,7 +148,7 @@ OBJ_DESTROY, HDF5_group           ; destroy object
 </dl>
 
 ---
-## hdf5_lapd__define.pro
+## hdf5_lapd__define.pro <a name="hdf5_lapd__define"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -168,7 +177,7 @@ OBJ_DESTROY, HDF5_lapd           ; destroy object
 </dl>
 
 ---
-## hdf5_lapd_example.pro
+## hdf5_lapd_example.pro <a name="hdf5_lapd_example"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -178,7 +187,7 @@ OBJ_DESTROY, HDF5_lapd           ; destroy object
 </dl>
 
 ---
-## hdf5_lapd_msi__define.pro
+## hdf5_lapd_msi__define.pro <a name="hdf5_lapd_msi__define"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -206,7 +215,7 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
 </dl>
 
 ---
-## lapd_6k_configuration.pro
+## lapd_6k_configuration.pro <a name="lapd_6k_configuration"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -217,7 +226,7 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
 </dl>
 
 ---
-## lapd_extract_msi.pro
+## lapd_extract_msi.pro <a name="lapd_extract_msi"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -228,7 +237,7 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
 </dl>
 
 ---
-## lapd_n5700_configuration.pro
+## lapd_n5700_configuration.pro <a name="lapd_n5700_configuration"></a>
 
 <dl>
   <dt>Defines</dt>
