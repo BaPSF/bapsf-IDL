@@ -198,9 +198,20 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
     <tr><td><code>Read_dataset_names(device_name)</code></td>
       <td>returns array of dataset names for MSI device <code>device_name</code></td></tr>
     <tr><td><code>Read_system_names()</code></td>
-      <td>returns array of MSI device </td></tr>
+      <td>returns array of MSI device names</td></tr>
   </table>
   </dd>
+</dl>
+
+---
+## lapd_6k_configuration.pro
+
+<dl>
+  <dt>Defines</dt>
+  <dd>FUNC <code>LAPD_6K_CONFIGURATION(input_file, RECEPT_NUMBER=recept_number, RT_INDEX=rt_index)</code></dd>
+  <dt>Purpose</dt>
+  <dd>Returns an IDL structure containing the parsed information in the '6k Compumotor' group of an LAPD HDF5 file.</dt>
+  <dd>
 </dl>
 
 ---
