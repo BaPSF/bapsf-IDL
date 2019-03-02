@@ -2,13 +2,11 @@
 
 Here is a brief description of each routine.  Examine the routine headers for detailed usage.
 
-1. [hdf5_error__define.pro](#first)
----
-<<<<<<< HEAD
-=======
+1. [hdf5_error__define.pro](#hdf5_error__define)
+1. [hdf5_file__define.pro](#hdf5_file__define)
 
->>>>>>> 94f156185ca02a2cc0029bcdf0287b892758780a
-## hdf5_error__define.pro <a name="first"></a>
+---
+## hdf5_error__define.pro <a name="hdf5_error__define"></a>
 
 <dl>
   <dt>Defines</dt>
@@ -30,7 +28,7 @@ Here is a brief description of each routine.  Examine the routine headers for de
 </dl>
 
 ---
-## hdf5_file__define.pro
+## hdf5_file__define.pro <a name="hdf5_error__define"></a>
 
 <dl>
   <dt>Defines</dt>
