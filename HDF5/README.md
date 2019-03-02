@@ -84,3 +84,31 @@ OBJ_DESTROY, HDF5_lapd           ; destroy object
 </dl>
 
 ---
+## hdf5_lapd_msi__define.pro
+
+<dl>
+  <dt>Defines</dt>
+  <dd>Object <code>HDF5_LaPD_MSI</code></dd>
+  <dt>Purpose</dt>
+  <dd>This object encapsulates various operations on the LaPD Machine State Information (MSI) stored in HDF5 format.</dd>
+  <dt>Example</dt>
+  <dd><pre><code>HDF5_LaPD_MSI = OBJ_NEW('HDF5_LaPD_MSI') ; create object
+HDF5_LaPD_MSI->Open, filepath            ; open the LaPD HDF5 file
+
+HDF5_LaPD_MSI->Close                     ; close file
+OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
+</code></pre></dd>
+  <dt>Methods</dt>
+  <dd><table>
+    <tr><td>Method</td><td>Description</td></tr>
+    <tr><td><code>Read_system_names()</code></td>
+      <td>returns array of MSI device </td></tr>
+    <tr><td><code>Read_dataset_names(device_name)</code></td>
+      <td>returns array of dataset names for MSI device <code>device_name</code></td></tr>
+    <tr><td><code>Read_dataset(device_name, dataset_name)</code></td>
+      <td>read dataset <code>dataset_name</code> under MSI device <code>device_name</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+---
