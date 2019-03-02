@@ -210,7 +210,18 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
   <dt>Defines</dt>
   <dd>FUNC <code>LAPD_6K_CONFIGURATION(input_file, RECEPT_NUMBER=recept_number, RT_INDEX=rt_index)</code></dd>
   <dt>Purpose</dt>
-  <dd>Returns an IDL structure containing the parsed information in the '6k Compumotor' group of an LAPD HDF5 file.</dt>
+  <dd>Returns an IDL structure containing the parsed information in the '6k Compumotor' group of an LAPD HDF5 file.
+  <dd>
+</dl>
+
+---
+## lapd_extract_msi.pro
+
+<dl>
+  <dt>Defines</dt>
+  <dd>n/a</dd>
+  <dt>Purpose</dt>
+  <dd>Script to read, print, and plot all recorded MSI data.
   <dd>
 </dl>
 
