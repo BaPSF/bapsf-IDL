@@ -2,7 +2,12 @@
 
 Here is a brief description of each routine.  Examine the routine headers for detailed usage.
 
+1. [hdf5_error__define.pro](#first)
 ---
+<<<<<<< HEAD
+=======
+
+>>>>>>> 94f156185ca02a2cc0029bcdf0287b892758780a
 ## hdf5_error__define.pro <a name="first"></a>
 
 <dl>
