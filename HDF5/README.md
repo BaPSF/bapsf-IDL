@@ -226,3 +226,14 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
 </dl>
 
 ---
+## lapd_n5700_configuration.pro
+
+<dl>
+  <dt>Defines</dt>
+  <dd>FUNC <code>lapd_n5700_configuration(input_file)</code></dd>
+  <dt>Purpose</dt>
+  <dd>Returns an IDL structure containing the parsed information in the 'N5700_PS' Agilent programmable power supply configuration group of an LAPD HDF5 file.
+  <dd>
+</dl>
+
+---
