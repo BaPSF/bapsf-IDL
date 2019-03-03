@@ -19,6 +19,7 @@ to the header of each script.
 * [lapd_sis3305_configuration.pro](#lapd_sis3305_configuration)
 * [lapd_sis_configuration.pro](#lapd_sis_configuration)
 * [lapd_tvs_configuration.pro](#lapd_tvs_configuration)
+* [lapd_velmex_xz_configuration.pro](#lapd_velmex_xz_configuration)
 
 ---
 ## hdf5_error__define.pro <a name="hdf5_error__define"></a>
@@ -319,10 +320,21 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
 
 <dl>
   <dt>Defines</dt>
-  <dd>FUNC <code>LAPD_TVS_CONFIGURATION(input_file, requested_config_name)</code></dd>
+  <dd>FUNC <code>LAPD_TVS_CONFIGURATION(input_file)</code></dd>
   <dt>Purpose</dt>
   <dd>
     ImportTVS600 class digitizer configuration from an LaPD HDF5 data-run file.
+  <dd>
+</dl>
+
+---
+## lapd_velmex_xz_configuration.pro <a name="lapd_velmex_xz_configuration"></a>
+
+<dl>
+  <dt>Defines</dt>
+  <dd>FUNC <code>lapd_velmex_xz_configuration(input_file)</code></dd>
+  <dt>Purpose</dt>
+  <dd>Returns an IDL structure containing the parsed information in the 'Velmex XZ' group of an LaPD HDF5 file.
   <dd>
 </dl>
 
