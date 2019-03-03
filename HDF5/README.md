@@ -20,6 +20,7 @@ to the header of each script.
 * [lapd_sis_configuration.pro](#lapd_sis_configuration)
 * [lapd_tvs_configuration.pro](#lapd_tvs_configuration)
 * [lapd_velmex_xz_configuration.pro](#lapd_velmex_xz_configuration)
+* [lapd_waveform_configuration.pro](#lapd_waveform_configuration)
 
 ---
 ## hdf5_error__define.pro <a name="hdf5_error__define"></a>
@@ -335,6 +336,17 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
   <dd>FUNC <code>lapd_velmex_xz_configuration(input_file)</code></dd>
   <dt>Purpose</dt>
   <dd>Returns an IDL structure containing the parsed information in the 'Velmex XZ' group of an LaPD HDF5 file.
+  <dd>
+</dl>
+
+---
+## lapd_waveform_configuration.pro <a name="lapd_waveform_configuration"></a>
+
+<dl>
+  <dt>Defines</dt>
+  <dd>FUNC <code>lapd_waveform_configuration(input_file)</code></dd>
+  <dt>Purpose</dt>
+  <dd>Returns an IDL structure containing the parsed information in the 'Waveform' group of an LaPD HDF5 file.
   <dd>
 </dl>
 
