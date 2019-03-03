@@ -305,7 +305,7 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
 
 <dl>
   <dt>Defines</dt>
-  <dd>FUNC <code>lapd_sis3305_configuration(input_file, requested_config_name)</code></dd>
+  <dd>FUNC <code>LAPD_SIS_CONFIGURATION(input_file, requested_config_name)</code></dd>
   <dt>Purpose</dt>
   <dd>
     <p>Returns an IDL structure containing the parsed information for the requested 'SIS3301' analog-digital-converter configuration in the LaPD HDF5 file.</p>
