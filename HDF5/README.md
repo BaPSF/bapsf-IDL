@@ -15,6 +15,7 @@ to the header of each script.
 * [lapd_n5700_configuration.pro](#lapd_n5700_configuration)
 * [lapd_ni_xz_configuration.pro](#lapd_ni_xz_configuration)
 * [lapd_process_xy_motion.pro](#lapd_process_xy_motion)
+* [lapd_sis3302_configuration.pro](#lapd_sis3302_configuration)
 
 ---
 ## hdf5_error__define.pro <a name="hdf5_error__define"></a>
@@ -268,6 +269,19 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
   <dd>FUNC <code>LAPD_PROCESS_XY_MOTION(input_file)</code></dd>
   <dt>Purpose</dt>
   <dd>Returns an IDL structure containing the parsed information in the '6K Compumotor' group of an LaPD HDF5 file.
+  <dd>
+</dl>
+
+---
+## lapd_sis3302_configuration.pro <a name="lapd_sis3302_configuration"></a>
+
+<dl>
+  <dt>Defines</dt>
+  <dd>FUNC <code>lapd_sis3302_configuration(input_file, requested_config_name)</code></dd>
+  <dt>Purpose</dt>
+  <dd>
+    <p>Returns an IDL structure containing the parsed information for the requested 'SIS3302' analog-digital-converter configuration in the LaPD HDF5 file.</p>
+    <p>The 'SIS3302' is one of the analog-digital-converters (100 MHz, 16-bit) used by the 'SIS Crate' remote digitizer module.</p>
   <dd>
 </dl>
 
