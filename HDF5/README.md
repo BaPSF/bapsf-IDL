@@ -14,6 +14,7 @@ to the header of each script.
 * [lapd_extract_msi.pro](#lapd_extract_msi)
 * [lapd_n5700_configuration.pro](#lapd_n5700_configuration)
 * [lapd_ni_xz_configuration.pro](#lapd_ni_xz_configuration)
+* [lapd_process_xy_motion.pro](#lapd_process_xy_motion)
 
 ---
 ## hdf5_error__define.pro <a name="hdf5_error__define"></a>
@@ -256,6 +257,17 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
   <dd>FUNC <code>lapd_ni_xz_configuration(input_file)</code></dd>
   <dt>Purpose</dt>
   <dd>Returns an IDL structure containing the parsed information in the 'NI_XZ' group of an LaPD HDF5 file.
+  <dd>
+</dl>
+
+---
+## lapd_process_xy_motion.pro <a name="lapd_process_xy_motion"></a>
+
+<dl>
+  <dt>Defines</dt>
+  <dd>FUNC <code>LAPD_PROCESS_XY_MOTION(input_file)</code></dd>
+  <dt>Purpose</dt>
+  <dd>Returns an IDL structure containing the parsed information in the '6K Compumotor' group of an LaPD HDF5 file.
   <dd>
 </dl>
 
