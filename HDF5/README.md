@@ -13,6 +13,7 @@ to the header of each script.
 * [lapd_6k_configuration.pro](#lapd_6k_configuration)
 * [lapd_extract_msi.pro](#lapd_extract_msi)
 * [lapd_n5700_configuration.pro](#lapd_n5700_configuration)
+* [lapd_ni_xz_configuration.pro](#lapd_ni_xz_configuration)
 
 ---
 ## hdf5_error__define.pro <a name="hdf5_error__define"></a>
@@ -244,6 +245,17 @@ OBJ_DESTROY, HDF5_LaPD_MSI               ; destroy object
   <dd>FUNC <code>lapd_n5700_configuration(input_file)</code></dd>
   <dt>Purpose</dt>
   <dd>Returns an IDL structure containing the parsed information in the 'N5700_PS' Agilent programmable power supply configuration group of an LAPD HDF5 file.
+  <dd>
+</dl>
+
+---
+## lapd_ni_xz_configuration.pro <a name="lapd_ni_xz_configuration"></a>
+
+<dl>
+  <dt>Defines</dt>
+  <dd>FUNC <code>lapd_ni_xz_configuration(input_file)</code></dd>
+  <dt>Purpose</dt>
+  <dd>Returns an IDL structure containing the parsed information in the 'NI_XZ' group of an LaPD HDF5 file.
   <dd>
 </dl>
 
