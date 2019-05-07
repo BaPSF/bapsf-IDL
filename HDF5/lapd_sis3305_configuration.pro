@@ -1,4 +1,4 @@
-FUNCTION lapd_sis3305_configuration,input_file,requested_config_name
+FUNCTION lapd_sis3305_configuration, input_file, requested_config_name, quiet=quiet
 COMPILE_OPT IDL2
 s='lapd_sis3305_configuration: '
 ;Import Struck Innovative Systems SIS3305 (1.25+GHZ 10bit) class digitizer
@@ -19,6 +19,7 @@ s='lapd_sis3305_configuration: '
 ;
 ;
 ;Modification history:
+;Oct 17, 2018   => Added 'quiet' option to suppress non-critical print outputs.
 ;
 ;
 !Quiet=1
@@ -26,8 +27,10 @@ sis_structure = {dt:float(0.)}
 
 ; Open HDF5 file.
 IF (input_file EQ '') THEN input_file = dialog_pickfile(path='./',title='Please choose an HDF5 file')
-PRINT,'-----------------------------------------------------------------------'
-PRINT,'SIS CRATE, Digitizer type 3305 : Reading configuration for digitizer(s)'
+IF quiet EQ 0 THEN BEGIN
+  PRINT, '-----------------------------------------------------------------------'
+  PRINT, 'SIS CRATE, Digitizer type 3305 : Reading configuration for digitizer(s)'
+ENDIF
 
 ; Create the object.
 HDF5_file = OBJ_NEW('HDF5_file')
@@ -305,7 +308,8 @@ for i=0,n_active_boards-1 do begin
   bw_mode = board_config_group->Read_attribute('Bandwidth')
   bandwidth[iboard,*] = bw_index_to_bw[bw_mode]
 
-  print,strcompress('SIS3305 : Board '+string(iboard+1)+': Effective clock rate= '+string(1./dt[iboard,0]/1e9)+' GHz')
+  IF quiet EQ 0 THEN print, strcompress('SIS3305 : Board '+string(iboard+1)+ $
+    ': Effective clock rate= '+string(1./dt[iboard,0]/1e9)+' GHz')
 
   ;Samples digitized
   samples[iboard,*] = board_config_group->Read_attribute('Samples')
@@ -431,13 +435,13 @@ sis_structure = CREATE_STRUCT('dt',dt,$
 'lc_shots_averaged',lc_shots_averaged)
 
 
-print,strcompress('Total channels digitized: '+string(nchannels))
+IF quiet EQ 0 THEN print, strcompress('Total channels digitized: '+string(nchannels))
 
 
 
 Cleanup:
 OBJ_DESTROY, HDF5_file
 
-RETURN,sis_structure
+RETURN, sis_structure
 
 END
