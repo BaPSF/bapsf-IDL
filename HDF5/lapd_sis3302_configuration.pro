@@ -1,4 +1,4 @@
-FUNCTION lapd_sis3302_configuration,input_file,requested_config_name
+FUNCTION lapd_sis3302_configuration, input_file, requested_config_name, quiet=quiet
 COMPILE_OPT IDL2
 s='lapd_sis3302_configuration: '
 ;Import Struck Innovative Systems SIS3302 (100MHZ 16bit) class digitizer
@@ -16,10 +16,13 @@ s='lapd_sis3302_configuration: '
 ;
 ;
 ;Modification history:
+;Oct 17, 2018   => Added 'quiet' option to suppress non-critical print outputs.
 ;
 ;
-PRINT,'-----------------------------------------------------------------------'
-PRINT,'SIS CRATE, Digitizer type 3302 : Reading configuration for digitizer(s)'
+IF quiet EQ 0 THEN BEGIN
+  PRINT,'-----------------------------------------------------------------------'
+  PRINT,'SIS CRATE, Digitizer type 3302 : Reading configuration for digitizer(s)'
+ENDIF
 !Quiet=1
 sis_structure = {dt:float(0.)}
 
@@ -43,7 +46,6 @@ sis_group_test = WHERE(rac_subgroup_names EQ 'SIS crate')
 IF (sis_group_test[0] EQ -1) THEN BEGIN
   print,'No SIS crate module associated with this hdf5 file'
   goto,cleanup
-
 ENDIF
 
 
@@ -62,25 +64,31 @@ CASE N_PARAMS() OF
 
   ;No configuration name supplied
   1: BEGIN
-    PRINT,'***********************'
-    PRINT,'No SIS Crate configuration name supplied. Attempting to pick one out.'
-    IF (N_ELEMENTS(sis_config_group_names) GT 1) THEN BEGIN
-      PRINT,'SIS Crate 3302: Available configurations:'
-      PRINT,sis_config_group_names
-      PRINT
+    IF quiet EQ 0 THEN BEGIN
       PRINT,'***********************'
-      PRINT,'SIS Crate 3302: WARNING: Multiple configurations detected.'
-      PRINT,'SIS Crate 3302: Using the configuration group name that matches the first dataset name.'
+      PRINT,'No SIS Crate configuration name supplied. Attempting to pick one out.'
+    ENDIF
+    IF (N_ELEMENTS(sis_config_group_names) GT 1) THEN BEGIN
+      IF quiet EQ 0 THEN BEGIN
+        PRINT,'SIS Crate 3302: Available configurations:'
+        PRINT,sis_config_group_names
+        PRINT
+        PRINT,'***********************'
+        PRINT,'SIS Crate 3302: WARNING: Multiple configurations detected.'
+        PRINT,'SIS Crate 3302: Using the configuration group name that matches the first dataset name.'
+      ENDIF
       first_sis_dataset_name=reform(sis_dataset_names[0])
       selected_config_group_name = strmid(first_sis_dataset_name,0,stregex(first_sis_dataset_name,'\[')-1)
 
-      PRINT
+      IF quiet EQ 0 THEN BEGIN
+        PRINT
 
-      PRINT,'SIS Crate 3302: This configuration group name is "'+selected_config_group_name+'".'
-      print,'***********************'
-
+        PRINT,'SIS Crate 3302: This configuration group name is "'+selected_config_group_name+'".'
+        print,'***********************'
+      ENDIF
     ENDIF ELSE BEGIN;Done with more than one sis group case
-      print,'Only one SIS Crate configuration found: "'+sis_config_group_names[0]+'." Using this one.'
+      IF quiet EQ 0 THEN print,'Only one SIS Crate configuration found: "'+sis_config_group_names[0]+ $
+        '." Using this one.'
       selected_config_group_name = reform(sis_config_group_names[0])
     ENDELSE
 
@@ -88,24 +96,26 @@ CASE N_PARAMS() OF
 
   ;configuration name was supplied
   2: BEGIN
-    PRINT,'---'
-    PRINT,'Requested configuration: '+requested_config_name
+    IF quiet EQ 0 THEN BEGIN
+      PRINT,'---'
+      PRINT,'Requested configuration: '+requested_config_name
+    ENDIF
     ii = WHERE(sis_config_group_names EQ requested_config_name)
     IF (ii[0] EQ -1) THEN BEGIN
-      MESSAGE,'Requested SIS Crate configuration name ('+requested_config_name+') does not mactch any available configuration.'
+      MESSAGE,'Requested SIS Crate configuration name ('+requested_config_name+') does not match'+$
+        ' any available configuration.'
       PRINT,'Valid configuration names:'
       PRINT,sis_config_group_names
       STOP
     ENDIF
     ;requested name found in SIS group. Use it.
     selected_config_group_name = requested_config_name
-
   END ;Two-argument case
 
   ELSE: MESSAGE,'Wrong number of arguments.'
 
 ENDCASE
-PRINT,'---'
+IF quiet EQ 0 THEN PRINT,'---'
 
 
 ; Open the config group that was selected
@@ -205,19 +215,19 @@ clock_odd_outputs        = ''
 clock_mode_code = sis3820_config_group->Read_attribute('Clock mode')
 clock_mode=clock_mode_strings[clock_mode_code]
 if (clock_mode_code ne 1) then begin
- print,s+'Error.'
- print,'Only "Straight clock" mode is handled for SIS3820 board'
- print,'Current SIS3820 clock mode ='+clock_mode
- STOP
+  print,s+'Error.'
+  print,'Only "Straight clock" mode is handled for SIS3820 board'
+  print,'Current SIS3820 clock mode ='+clock_mode
+  STOP
 endif
 
 clock_source_code = sis3820_config_group->Read_attribute('Clock source')
 clock_source=clock_source_strings[clock_source_code]
 if (clock_source_code ne 1) then begin
- print,s+'Error.'
- print,'Only "2nd Internal 100MHz (U580)" source is handled for SIS3820 board'
- print,'Current SIS3820 clock source ='+clock_source
- STOP
+  print,s+'Error.'
+  print,'Only "2nd Internal 100MHz (U580)" source is handled for SIS3820 board'
+  print,'Current SIS3820 clock source ='+clock_source
+  STOP
 endif
 
 
@@ -243,7 +253,7 @@ sis_all_slot_numbers = sis_config_group->Read_attribute('SIS crate slot numbers'
 sis3302_slot_numbers = sis_all_slot_numbers[sis3302_board_indices]
 sis3302_board_numbers = (sis3302_slot_numbers-5)/2 +1
 
-print,'SIS3302 boards used:',sis3302_board_numbers
+IF quiet EQ 0 THEN print,'SIS3302 boards used:', sis3302_board_numbers
 n_active_boards = n_elements(sis3302_board_numbers)
 
 
@@ -286,7 +296,8 @@ for i=0,n_active_boards-1 do begin
   hardware_average_code = board_config_group->Read_attribute('Sample averaging (hardware)')
   sample_averaging[iboard,*] = (2L^hardware_average_code)
   dt[iboard,*] = global_clocktick * float(sample_averaging[iboard,*])
-  print,strcompress('SIS3302 : Board '+string(iboard+1)+': Effective clock rate= '+string(1./dt[iboard,0]/1e6)+' MHz')
+  IF quiet EQ 0 THEN print, strcompress('SIS3302 : Board '+string(iboard+1)+ $
+      ': Effective clock rate= '+string(1./dt[iboard,0]/1e6)+' MHz')
 
   ;Samples digitized
   samples[iboard,*] = board_config_group->Read_attribute('Samples')
@@ -410,13 +421,12 @@ sis_structure = CREATE_STRUCT('dt',dt,$
 'lc_shots_averaged',lc_shots_averaged)
 
 
-print,strcompress('Total channels digitized: '+string(nchannels))
-
+IF quiet EQ 0 THEN print, strcompress('Total channels digitized: '+string(nchannels))
 
 
 Cleanup:
 OBJ_DESTROY, HDF5_file
 
-RETURN,sis_structure
+RETURN, sis_structure
 
 END
